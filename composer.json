@@ -1,0 +1,27 @@
+{
+  "name": "phpreboot/stopwatch",
+  "description": "PHP utility library for Stopwatch. Useful for debugging, optimization etc.",
+  "keywords": ["stopwatch", "timer"],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "kapilsharma",
+      "email": "kapil@kapilsharma.info",
+      "homepage": "http://blog.kapilsharma.info",
+      "role": "Developer"
+    }
+  ],
+  "support": {
+    "issues": "https://github.com/phpreboot/stopwatch/issues"
+  },
+  "autoload": {
+    "psr-4": {"Phpreboot\\": "src/PhpReboot"}
+  },
+  "autoload-dev": {
+    "psr-4": {"Phpreboot\\": "tests/PhpReboot"}
+  },
+  "require": {},
+  "require-dev": {
+    "phpunit/phpunit": "~4.8"
+  }
+}
