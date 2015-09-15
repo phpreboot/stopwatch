@@ -19,12 +19,21 @@ class StopWatch
 
     private $watches;
 
-    public function __construct($name = self::STOPWATCH_DEFAULT_NAME)
+    /**
+     * Constructor to create new StopWatch instance with default watch.
+     */
+    public function __construct()
     {
         $this->watches = array();
-        $this->addWatch($name);
+        $this->addWatch(self::STOPWATCH_DEFAULT_NAME);
     }
 
+    /**
+     * Add a new watch to the StopWatch.
+     *
+     * @param string $name Name of watch to be added.
+     * @return bool True if watch added successfully, false otherwise.
+     */
     public function addWatch($name)
     {
         if (array_key_exists($name, $this->watches)) {
@@ -32,13 +41,26 @@ class StopWatch
         }
 
         $watch = new Watch($name);
-
         $this->watches[$name] = $watch;
+
+        return true;
+    }
+
+    public function addWatches(array $watches)
+    {
+        if (empty($watches)) {
+            return false;
+        }
+
+        foreach ($watches as )
     }
 
     /**
+     * Get a watch by name of watch.
+     *
      * @param string $name Name of watch
-     * @return Watch
+     * @throws \InvalidArgumentException In case watch with name '$name' does not exist.
+     * @return Watch A watch instance with name '$name'.
      */
     public function getWatch($name = self::STOPWATCH_DEFAULT_NAME)
     {
@@ -47,5 +69,10 @@ class StopWatch
         }
 
         return $this->watches[$name];
+    }
+
+    public function getWatchCount()
+    {
+        return count($this->watches);
     }
 }
