@@ -28,6 +28,25 @@ class StopWatch
         $this->addWatch(self::STOPWATCH_DEFAULT_NAME);
     }
 
+    public function start($name = self::STOPWATCH_DEFAULT_NAME)
+    {
+        if (!$this->isWatchExist($name)) {
+            return false;
+        }
+
+        return $this->getWatch($name)->start();
+    }
+
+    public function pause($name = self::STOPWATCH_DEFAULT_NAME)
+    {
+        
+    }
+
+    public function isWatchExist($name)
+    {
+        return array_key_exists($name, $this->watches);
+    }
+
     /**
      * Add a new watch to the StopWatch.
      *
@@ -48,11 +67,18 @@ class StopWatch
 
     public function addWatches(array $watches)
     {
+        $isWatchAdded = false;
+
         if (empty($watches)) {
-            return false;
+            return $isWatchAdded;
         }
 
-        foreach ($watches as )
+        foreach ($watches as $watch) {
+            $this->addWatch($watches);
+            $isWatchAdded = true;
+        }
+
+        return $isWatchAdded;
     }
 
     /**

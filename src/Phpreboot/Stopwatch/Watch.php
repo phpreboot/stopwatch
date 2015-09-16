@@ -20,6 +20,9 @@ class Watch
     const STATE_STOPPED     = 3;
 
     private $name;
+    private $state;
+    private $startTime;
+    private $runtime;
 
     /**
      * Constructor
@@ -29,6 +32,60 @@ class Watch
     public function __construct($name)
     {
         $this->name = $name;
+        $this->state = self::STATE_NOT_STARTED;
+        $this->runtime = 0;
+    }
+
+    public function pause()
+    {
+        if ($this->state !== self::STATE_STARTED) {
+            return false;
+        }
+
+        $time = microtime();
+
+        $this->runtime += ($time - $this->startTime);
+        $this->startTime = null;
+        $this->setState(self::STATE_PAUSED);
+
+        return true;
+    }
+
+    public function start()
+    {
+        if (!$this->canStart()) {
+            return false;
+        }
+
+        $this->startTime = microtime();
+
+        //TODO: Although no chance of validation error, we must set start time to 'null' in case of validation error.
+        return $this->setState(self::STATE_STARTED);
+    }
+
+    public function canStart()
+    {
+        if ($this->state === self::STATE_NOT_STARTED) {
+            return true;
+        }
+
+        if ($this->state === self::STATE_PAUSED) {
+            return true;
+        }
+
+        return false;
+    }
+
+    protected function setState($state)
+    {
+        $state = intval($state);
+
+        if ($state < 0 || $state > 4) {
+            return false;
+        }
+
+        $this->state = $state;
+        return true;
     }
 
     /**
