@@ -15,7 +15,7 @@ use Phpreboot\Stopwatch\Watch;
 
 class StopWatch
 {
-    const STOPWATCH_DEFAULT_NAME = "default";
+    const STOPWATCH_DEFAULT_NAME = "default_watch_R@nd0m_n@m3";
 
     private $watches;
 
@@ -39,7 +39,29 @@ class StopWatch
 
     public function pause($name = self::STOPWATCH_DEFAULT_NAME)
     {
-        
+        if (!$this->isWatchExist($name)) {
+            return false;
+        }
+
+        return $this->getWatch($name)->pause();
+    }
+
+    public function stop($name = self::STOPWATCH_DEFAULT_NAME)
+    {
+        if (!$this->isWatchExist($name)) {
+            return false;
+        }
+
+        return $this->getWatch($name)->stop();
+    }
+
+    public function getTime($name = self::STOPWATCH_DEFAULT_NAME)
+    {
+        if (!$this->isWatchExist($name)) {
+            return -1;
+        }
+
+        return $this->getWatch($name)->getTime();
     }
 
     public function isWatchExist($name)

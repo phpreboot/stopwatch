@@ -36,13 +36,44 @@ class Watch
         $this->runtime = 0;
     }
 
+    public function getTime()
+    {
+        $currentRunTime = 0;
+
+        if ($this->state === self::STATE_STARTED) {
+            $time = microtime(true);
+            $currentRunTime = $time - $this->startTime;
+        }
+
+        return $this->runtime + $currentRunTime;
+    }
+
+    public function stop()
+    {
+        if ($this->state === self::STATE_STARTED) {
+            $this->pause();
+        }
+
+        if ($this->state === self::STATE_PAUSED) {
+            $this->state = self::STATE_STOPPED;
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * Pause the watch.
+     *
+     * @return bool is watch paused successfully?
+     */
     public function pause()
     {
         if ($this->state !== self::STATE_STARTED) {
             return false;
         }
 
-        $time = microtime();
+        $time = microtime(true);
 
         $this->runtime += ($time - $this->startTime);
         $this->startTime = null;
@@ -51,18 +82,31 @@ class Watch
         return true;
     }
 
+    /**
+     * Start the watch.
+     *
+     * @return bool returns if watch is started or not.
+     */
     public function start()
     {
         if (!$this->canStart()) {
             return false;
         }
 
-        $this->startTime = microtime();
+        $this->startTime = microtime(true);
 
         //TODO: Although no chance of validation error, we must set start time to 'null' in case of validation error.
         return $this->setState(self::STATE_STARTED);
     }
 
+    /**
+     * Confirms if the watch can be started or not. A watch can be started if it is in following states:
+     *   - Not started and
+     *   - paused
+     * Watch can not be started if it is already running or stopped.
+     *
+     * @return bool true if we can start the watch, false otherwise.
+     */
     public function canStart()
     {
         if ($this->state === self::STATE_NOT_STARTED) {
@@ -76,6 +120,12 @@ class Watch
         return false;
     }
 
+    /**
+     * Set the state of the watch. Supposed to be set internally, so it is a protected method.
+     *
+     * @param $state State to be set.
+     * @return bool Returns true if state is set successfully, false otherwise.
+     */
     protected function setState($state)
     {
         $state = intval($state);
@@ -86,6 +136,16 @@ class Watch
 
         $this->state = $state;
         return true;
+    }
+
+    /**
+     * Return current state of the watch.
+     *
+     * @return int current `state` of the watch.
+     */
+    public function getState()
+    {
+        return $this->state;
     }
 
     /**
