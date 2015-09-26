@@ -15,4 +15,12 @@ matrix:
         - php: hhvm
     fast_finish: true
 
-script: ./vendor/bin/phpunit
+before_script:
+    - cp phpunit.xml.dist phpunit.xml
+    - composer install
+
+script: phpunit
+
+notifications:
+  email:
+    -  kapil@kapilsharma.info
