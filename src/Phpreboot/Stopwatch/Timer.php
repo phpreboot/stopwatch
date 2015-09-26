@@ -12,7 +12,7 @@
 namespace Phpreboot\Stopwatch;
 
 
-class Watch
+class Timer
 {
     const STATE_NOT_STARTED = 0;
     const STATE_STARTED     = 1;

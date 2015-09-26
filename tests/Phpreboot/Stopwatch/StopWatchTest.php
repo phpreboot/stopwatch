@@ -12,7 +12,7 @@
 namespace Phpunit\Stopwatch;
 
 use Phpreboot\Stopwatch\StopWatch;
-use Phpreboot\Stopwatch\Watch;
+use Phpreboot\Stopwatch\Timer;
 
 /**
  * Class StopWatchTest
@@ -44,11 +44,11 @@ class StopWatchTest extends \PHPUnit_Framework_TestCase
      */
     public function testStopWatchHaveDefaultWatch()
     {
-        /** @var Watch $defaultWatch */
+        /** @var Timer $defaultWatch */
         $defaultWatch = $this->stopWatch->getWatch();
 
         $this->assertNotNull($defaultWatch, "No watch available");
-        $this->assertInstanceOf('Phpreboot\Stopwatch\Watch', $defaultWatch, "Not an instance of Watch");
+        $this->assertInstanceOf('Phpreboot\Stopwatch\Timer', $defaultWatch, "Not an instance of Watch");
 
         $name = $defaultWatch->getName();
 
@@ -106,7 +106,7 @@ class StopWatchTest extends \PHPUnit_Framework_TestCase
     public function testDefaultWatchCouldBeReturned()
     {
         $watch = $this->stopWatch->getWatch();
-        $this->assertInstanceOf('Phpreboot\Stopwatch\Watch', $watch, "Default watch is not an instance of Watch.");
+        $this->assertInstanceOf('Phpreboot\Stopwatch\Timer', $watch, "Default watch is not an instance of Watch.");
         $this->assertEquals(StopWatch::STOPWATCH_DEFAULT_NAME, $watch->getName(), "Name of default was was not correctly set.");
     }
 
@@ -118,6 +118,6 @@ class StopWatchTest extends \PHPUnit_Framework_TestCase
         $this->stopWatch->addWatch('newWatch');
 
         $newWatch = $this->stopWatch->getWatch("newWatch");
-        $this->assertInstanceOf('Phpreboot\Stopwatch\Watch', $newWatch, "New watch is not an instance of Watch.");
+        $this->assertInstanceOf('Phpreboot\Stopwatch\Timer', $newWatch, "New watch is not an instance of Watch.");
     }
 }

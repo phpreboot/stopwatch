@@ -11,20 +11,20 @@
 
 namespace Phpreboot\Stopwatch;
 
-use Phpreboot\Stopwatch\Watch;
+use Phpreboot\Stopwatch\Timer;
 
 class StopWatch
 {
     const STOPWATCH_DEFAULT_NAME = "default_watch_R@nd0m_n@m3";
 
-    private $watches;
+    private $timers;
 
     /**
      * Constructor to create new StopWatch instance with default watch.
      */
     public function __construct()
     {
-        $this->watches = array();
+        $this->timers = array();
         $this->addWatch(self::STOPWATCH_DEFAULT_NAME);
     }
 
@@ -66,7 +66,7 @@ class StopWatch
 
     public function isWatchExist($name)
     {
-        return array_key_exists($name, $this->watches);
+        return array_key_exists($name, $this->timers);
     }
 
     /**
@@ -77,12 +77,12 @@ class StopWatch
      */
     public function addWatch($name)
     {
-        if (array_key_exists($name, $this->watches)) {
+        if (array_key_exists($name, $this->timers)) {
             return false;
         }
 
-        $watch = new Watch($name);
-        $this->watches[$name] = $watch;
+        $watch = new Timer($name);
+        $this->timers[$name] = $watch;
 
         return true;
     }
@@ -96,7 +96,7 @@ class StopWatch
         }
 
         foreach ($watches as $watch) {
-            $this->addWatch($watches);
+            $this->addWatch($watch);
             $isWatchAdded = true;
         }
 
@@ -108,19 +108,19 @@ class StopWatch
      *
      * @param string $name Name of watch
      * @throws \InvalidArgumentException In case watch with name '$name' does not exist.
-     * @return Watch A watch instance with name '$name'.
+     * @return Timer A watch instance with name '$name'.
      */
     public function getWatch($name = self::STOPWATCH_DEFAULT_NAME)
     {
-        if (!array_key_exists($name, $this->watches)) {
+        if (!array_key_exists($name, $this->timers)) {
             throw new \InvalidArgumentException('Watch ' . $name . ' does not exist.');
         }
 
-        return $this->watches[$name];
+        return $this->timers[$name];
     }
 
     public function getWatchCount()
     {
-        return count($this->watches);
+        return count($this->timers);
     }
 }
