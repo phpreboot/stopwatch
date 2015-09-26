@@ -1,6 +1,6 @@
 {
   "name": "phpreboot/stopwatch",
-  "description": "PHP utility library for Stopwatch. Useful for debugging, optimization etc.",
+  "description": "PHP utility library for Stopwatch. Useful for optimization and other purpose.",
   "keywords": ["stopwatch", "timer"],
   "license": "MIT",
   "authors": [
