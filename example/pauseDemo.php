@@ -9,6 +9,12 @@
  * file that was distributed with this source code.
  */
 
+/*
+ * The example shows how to pause the timer for measuring time at different stages.
+ * Once watch is started, we can call `pause` method to pause the watch.
+ * If watch is paused, we can start it again to start timer. In that case, time will be added to timer.
+ */
+
 // Load Composer auto loader
 require_once "../vendor/autoload.php";
 

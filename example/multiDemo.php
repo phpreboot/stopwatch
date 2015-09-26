@@ -9,16 +9,30 @@
  * file that was distributed with this source code.
  */
 
+/*
+ * This example shows using multiple stop watches in the same program.
+ * If we want to use multiple watches, we must provide unique name all of them.
+ * Steps involved are:
+ *   - Add watches by any of following methods
+ *     - Call `addWatch` multiple times, with name of watch as parameter, or
+ *     - Call `addWatches` and pass an array of name of watches as parameter.
+ *   - Further operation is same as in `simplewatch` and `pauseDemo` example. However this time, we need to pass
+ *     watch name to all the methods.
+ */
+
 // Load Composer auto loader
 require_once "../vendor/autoload.php";
-
 use Phpreboot\Stopwatch\StopWatch;
-
-$requiredWatches = ["a", "b", "c"];
 
 // Create an instance of StopWatch
 $stopWatch = new StopWatch();
-$stopWatch->addWatches($requiredWatches);
+
+// Initialize the watches.
+$stopWatch->addWatches(["a", "b", "c"]);
+// We could also use
+// $stopWatch->addWatch("a");
+// $stopWatch->addWatch("b");
+// $stopWatch->addWatch("c");
 
 $operatorA = 0;
 $operatorB = 0;
