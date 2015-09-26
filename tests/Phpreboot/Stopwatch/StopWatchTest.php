@@ -41,6 +41,7 @@ class StopWatchTest extends \PHPUnit_Framework_TestCase
     /* ******************/
     /**
      * @group Phpreboot_Stopwatch_StopWatch_constructor
+     * @covers StopWatch::getWatch
      */
     public function testStopWatchHaveDefaultWatch()
     {
