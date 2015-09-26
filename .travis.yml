@@ -19,7 +19,7 @@ before_script:
     - cp phpunit.xml.dist phpunit.xml
     - composer install
 
-script: phpunit
+script: phpunit --configuration phpunit.xml --coverage-text
 
 notifications:
   email:
