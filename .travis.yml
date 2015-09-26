@@ -18,8 +18,9 @@ matrix:
 before_script:
     - cp phpunit.xml.dist phpunit.xml
     - composer install
+    - mkdir -p log/codeCoverage
 
-script: phpunit --configuration phpunit.xml --coverage-text
+script: phpunit
 
 notifications:
   email:
