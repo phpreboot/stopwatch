@@ -1,4 +1,4 @@
-# phpreboot/stopwatch
+# phpreboot/stopwatch [![Build Status](https://travis-ci.org/phpreboot/stopwatch.svg?branch=master)](https://travis-ci.org/phpreboot/stopwatch)
 
 ## Purpose
 
