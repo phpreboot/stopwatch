@@ -15,10 +15,10 @@
     "issues": "https://github.com/phpreboot/stopwatch/issues"
   },
   "autoload": {
-    "psr-4": {"Phpreboot\\": "src/PhpReboot"}
+    "psr-4": {"Phpreboot\\": "src/Phpreboot"}
   },
   "autoload-dev": {
-    "psr-4": {"Phpreboot\\": "tests/PhpReboot"}
+    "psr-4": {"Phpreboot\\": "tests/Phpreboot"}
   },
   "require": {},
   "require-dev": {
