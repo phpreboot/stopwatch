@@ -1,15 +1,15 @@
 # phpreboot/stopwatch [![Build Status](https://travis-ci.org/phpreboot/stopwatch.svg?branch=master)](https://travis-ci.org/phpreboot/stopwatch) [![Code Climate](https://codeclimate.com/github/phpreboot/stopwatch/badges/gpa.svg)](https://codeclimate.com/github/phpreboot/stopwatch) [![Test Coverage](https://codeclimate.com/github/phpreboot/stopwatch/badges/coverage.svg)](https://codeclimate.com/github/phpreboot/stopwatch/coverage)
 
-## Code climate report
-
-[https://codeclimate.com/github/phpreboot/stopwatch](https://codeclimate.com/github/phpreboot/stopwatch)
-
 ## Purpose
 
 While optimizations, we need to check time taken by different operations. This soon becomes ugly, if we put many
 `microtime` code blocks.
 
 Purpose of StopWatch is to provide neat way of recording time taken by different blocks.
+
+### Supported versions
+
+Above build is tested code on PHP version 5.3, 5.4, 5.5, 5.6, 7.0 and HHVM. Check `.travis.yml` for details.
 
 ## Examples
 
