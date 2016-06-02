@@ -1,4 +1,4 @@
-# phpreboot/stopwatch [![Build Status](https://travis-ci.org/phpreboot/stopwatch.svg?branch=master)](https://travis-ci.org/phpreboot/stopwatch)
+# phpreboot/stopwatch [![Build Status](https://travis-ci.org/phpreboot/stopwatch.svg?branch=master)](https://travis-ci.org/phpreboot/stopwatch) [![Code Climate](https://codeclimate.com/github/phpreboot/stopwatch/badges/gpa.svg)](https://codeclimate.com/github/phpreboot/stopwatch) [![Test Coverage](https://codeclimate.com/github/phpreboot/stopwatch/badges/coverage.svg)](https://codeclimate.com/github/phpreboot/stopwatch/coverage)
 
 ## Code climate report
 
