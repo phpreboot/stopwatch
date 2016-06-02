@@ -1,5 +1,9 @@
 # phpreboot/stopwatch [![Build Status](https://travis-ci.org/phpreboot/stopwatch.svg?branch=master)](https://travis-ci.org/phpreboot/stopwatch)
 
+## Code climate report
+
+[https://codeclimate.com/github/phpreboot/stopwatch]()
+
 ## Purpose
 
 While optimizations, we need to check time taken by different operations. This soon becomes ugly, if we put many
