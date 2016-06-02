@@ -2,7 +2,7 @@
 
 ## Code climate report
 
-[https://codeclimate.com/github/phpreboot/stopwatch]()
+[https://codeclimate.com/github/phpreboot/stopwatch](https://codeclimate.com/github/phpreboot/stopwatch)
 
 ## Purpose
 
