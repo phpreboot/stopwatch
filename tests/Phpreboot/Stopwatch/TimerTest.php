@@ -113,7 +113,7 @@ class TimerTest  extends \PHPUnit_Framework_TestCase
      */
     public function testNotStartedTimerCanNotBePaused()
     {
-        $this->markTestIncomplete("Need to be completed.");
+        $this->assertFalse($this->timer->pause(), "Paused timer was paused again.");
     }
 
     /**
@@ -121,7 +121,10 @@ class TimerTest  extends \PHPUnit_Framework_TestCase
      */
     public function testStoppedTimerCanNotBePaused()
     {
-        $this->markTestIncomplete("Need to be completed.");
+        $this->timer->start();
+        $this->timeWaster();
+        $this->timer->stop();
+        $this->assertFalse($this->timer->pause(), "Paused timer was paused again.");
     }
 
     protected function timeWaster()
