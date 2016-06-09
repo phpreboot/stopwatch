@@ -130,7 +130,7 @@ class Timer
     {
         $state = intval($state);
 
-        if ($state < 0 || $state > 4) {
+        if ($state < 0 || $state > 3) {
             return false;
         }
 

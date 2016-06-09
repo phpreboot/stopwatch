@@ -157,6 +157,47 @@ class TimerTest  extends \PHPUnit_Framework_TestCase
         $this->assertSame(Timer::STATE_STOPPED, $this->timer->getState(), 'Stopped timer was started again.');
     }
 
+    /**
+     * @group Phpreboot_Stopwatch_Timer_canStart
+     */
+    public function testCanStart()
+    {
+        $this->assertTrue($this->timer->canStart(), "'canStart' for stopped timer returns 'false'.");
+        $this->timer->start();
+        $this->assertFalse($this->timer->canStart(), "'canStart' for started timer returns 'true'.");
+        $this->timer->pause();
+        $this->assertTrue($this->timer->canStart(), "'canStart' for paused timer returns 'false'.");
+        $this->timer->stop();
+        $this->assertFalse($this->timer->canStart(), "'canStart' for stopped timer returns 'true'.");
+    }
+
+    /**
+     * @group Phpreboot_Stopwatch_Timer_setStart
+     */
+    public function testSetState()
+    {
+        // setState is protected. Making it public for testing.
+        // First get (reflection) class.
+        $class = new \ReflectionClass('Phpreboot\Stopwatch\Timer');
+        // Get (reflection) method. 
+        /** @var \ReflectionMethod $setState */
+        $setState = $class->getMethod('setState');
+        // Make method public (for testing purpose)
+        $setState->setAccessible(true);
+
+        // testing setState
+        $this->assertTrue($setState->invokeArgs($this->timer, [Timer::STATE_STARTED]), "Can not set state 'start'");
+        $this->assertSame(Timer::STATE_STARTED, $this->timer->getState(), "State 'started' could not be set");
+        $this->assertTrue($setState->invokeArgs($this->timer, [Timer::STATE_PAUSED]), "Can not set state 'pause'");
+        $this->assertSame(Timer::STATE_PAUSED, $this->timer->getState(), "State 'paused' could not be set");
+        $this->assertTrue($setState->invokeArgs($this->timer, [Timer::STATE_STOPPED]), "Can not set state 'stop'");
+        $this->assertSame(Timer::STATE_STOPPED, $this->timer->getState(), "State 'stopped' could not be set");
+
+        // Testing failed condition
+        $this->assertFalse($setState->invokeArgs($this->timer, [-1]), "Negative value for 'state' could be set.");
+        $this->assertFalse($setState->invokeArgs($this->timer, [4]), "Invalid value for 'state' could be set.");
+    }
+
     protected function timeWaster()
     {
         // Wasting some time
