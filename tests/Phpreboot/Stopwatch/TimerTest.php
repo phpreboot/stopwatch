@@ -127,6 +127,36 @@ class TimerTest  extends \PHPUnit_Framework_TestCase
         $this->assertFalse($this->timer->pause(), "Paused timer was paused again.");
     }
 
+    /**
+     * @group Phpreboot_Stopwatch_Timer_start
+     */
+    public function testTimerCanBeStarted()
+    {
+        $this->assertTrue($this->timer->start(), "Timer 'start' didn't returned true");
+        $this->assertSame(Timer::STATE_STARTED, $this->timer->getState(), "Timer could not be started correctly.");
+    }
+
+    /**
+     * @group Phpreboot_Stopwatch_Timer_start
+     */
+    public function testStartedTimerCanNotBeStarted()
+    {
+        $this->timer->start();
+        $this->assertFalse($this->timer->start(), "'start' on already started timer returned true.");
+    }
+
+    /**
+     * @group Phpreboot_Stopwatch_Timer_start
+     */
+    public function testStoppedTimerCanNotBeStarted()
+    {
+        $this->timer->start();
+        $this->timeWaster();
+        $this->timer->stop();
+        $this->assertFalse($this->timer->start(), "'start' on stopped timer returned true.");
+        $this->assertSame(Timer::STATE_STOPPED, $this->timer->getState(), 'Stopped timer was started again.');
+    }
+
     protected function timeWaster()
     {
         // Wasting some time
