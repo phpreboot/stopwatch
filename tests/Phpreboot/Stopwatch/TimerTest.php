@@ -194,8 +194,8 @@ class TimerTest  extends \PHPUnit_Framework_TestCase
         $this->assertSame(Timer::STATE_STOPPED, $this->timer->getState(), "State 'stopped' could not be set");
 
         // Testing failed condition
-        $this->assertFalse($setState->invokeArgs($this->timer, [-1]), "Negative value for 'state' could be set.");
-        $this->assertFalse($setState->invokeArgs($this->timer, [4]), "Invalid value for 'state' could be set.");
+        $this->assertFalse($setState->invokeArgs($this->timer, array(-1)), "Negative value for 'state' could be set.");
+        $this->assertFalse($setState->invokeArgs($this->timer, array(4)), "Invalid value for 'state' could be set.");
     }
 
     protected function timeWaster()
