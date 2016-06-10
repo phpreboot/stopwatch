@@ -186,11 +186,11 @@ class TimerTest  extends \PHPUnit_Framework_TestCase
         $setState->setAccessible(true);
 
         // testing setState
-        $this->assertTrue($setState->invokeArgs($this->timer, [Timer::STATE_STARTED]), "Can not set state 'start'");
+        $this->assertTrue($setState->invokeArgs($this->timer, array(Timer::STATE_STARTED)), "Can not set state 'start'");
         $this->assertSame(Timer::STATE_STARTED, $this->timer->getState(), "State 'started' could not be set");
-        $this->assertTrue($setState->invokeArgs($this->timer, [Timer::STATE_PAUSED]), "Can not set state 'pause'");
+        $this->assertTrue($setState->invokeArgs($this->timer, array(Timer::STATE_PAUSED)), "Can not set state 'pause'");
         $this->assertSame(Timer::STATE_PAUSED, $this->timer->getState(), "State 'paused' could not be set");
-        $this->assertTrue($setState->invokeArgs($this->timer, [Timer::STATE_STOPPED]), "Can not set state 'stop'");
+        $this->assertTrue($setState->invokeArgs($this->timer, array(Timer::STATE_STOPPED)), "Can not set state 'stop'");
         $this->assertSame(Timer::STATE_STOPPED, $this->timer->getState(), "State 'stopped' could not be set");
 
         // Testing failed condition
