@@ -24,3 +24,7 @@ script: phpunit
 notifications:
   email:
     -  kapil@kapilsharma.info
+
+addons:
+    code_climate:
+        repo_token: a57d93296df9c8663e493a6158ab1e0c16f3eaf458b2396d221e0224bd863492
