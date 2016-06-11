@@ -11,6 +11,7 @@
 
 namespace Phpunit\Stopwatch;
 
+use phpDocumentor\Reflection\Types\This;
 use Phpreboot\Stopwatch\StopWatch;
 use Phpreboot\Stopwatch\Timer;
 
@@ -160,5 +161,33 @@ class StopWatchTest extends \PHPUnit_Framework_TestCase
     public function testGetWatchForNonExistingWatchThrowsException()
     {
         $this->stopWatch->getWatch('NonExistingWatch');
+    }
+
+    /**
+     * @group Phpreboot_Stopwatch_StopWatch_isWatchExist
+     */
+    public function testWatchExistenceCanBeChecked()
+    {
+        $this->assertFalse($this->stopWatch->isWatchExist('newWatch'));
+        $this->stopWatch->addWatch("newWatch");
+        $this->assertTrue($this->stopWatch->isWatchExist('newWatch'));
+    }
+
+    /**
+     * @group Phpreboot_Stopwatch_StopWatch_start
+     */
+    public function testDefaultStopWatchCanBeStarted()
+    {
+        $this->assertSame(Timer::STATE_NOT_STARTED, $this->stopWatch->getWatch()->getState(), "StopWatch timer state is not correct.");
+        $this->assertTrue($this->stopWatch->start(), "StopWatch could not be started");
+        $this->assertSame(Timer::STATE_STARTED, $this->stopWatch->getWatch()->getState(), "StopWatch timer state is not correct after start.");
+    }
+
+    /**
+     * @group Phpreboot_Stopwatch_StopWatch_start
+     */
+    public function testNonExistingStopWatchCanNotBeStarted()
+    {
+        $this->assertFalse($this->stopWatch->start('nonExistingWatch'));
     }
 }

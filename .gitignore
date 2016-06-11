@@ -3,3 +3,4 @@
 phpunit.xml
 /log/
 build
+local-notes.md
