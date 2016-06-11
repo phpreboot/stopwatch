@@ -95,7 +95,6 @@ class Timer
 
         $this->startTime = microtime(true);
 
-        //TODO: Although no chance of validation error, we must set start time to 'null' in case of validation error.
         return $this->setState(self::STATE_STARTED);
     }
 

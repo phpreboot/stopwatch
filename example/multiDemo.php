@@ -29,10 +29,7 @@ $stopWatch = new StopWatch();
 
 // Initialize the watches.
 $stopWatch->addWatches(["a", "b", "c"]);
-// We could also use
-// $stopWatch->addWatch("a");
-// $stopWatch->addWatch("b");
-// $stopWatch->addWatch("c");
+// We could also use '$stopWatch->addWatch("name")' individually.
 
 $operatorA = 0;
 $operatorB = 0;

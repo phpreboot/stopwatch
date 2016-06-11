@@ -1,5 +1,4 @@
 /vendor/
-.idea
 phpunit.xml
 /log/
 build
