@@ -89,15 +89,14 @@ class StopWatch
 
     public function addWatches(array $watches)
     {
-        $isWatchAdded = false;
+        $isWatchAdded = array();
 
         if (empty($watches)) {
             return $isWatchAdded;
         }
 
         foreach ($watches as $watch) {
-            $this->addWatch($watch);
-            $isWatchAdded = true;
+            $isWatchAdded[] = $this->addWatch($watch);
         }
 
         return $isWatchAdded;

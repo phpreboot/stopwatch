@@ -91,7 +91,9 @@ class StopWatchTest extends \PHPUnit_Framework_TestCase
     {
         $this->assertEquals(1, $this->stopWatch->getWatchCount(), "Stopwatch doesn't initialized with default watch.");
 
-        $this->assertTrue($this->stopWatch->addWatches(array('watch1', 'watch2')), "addWatches returns false for two new watches.");
+        $this->assertSame(array(true,true),
+            $this->stopWatch->addWatches(array('watch1', 'watch2')),
+            "addWatches returns false for two new watches.");
         $this->assertEquals(3, $this->stopWatch->getWatchCount(), "Stopwatch doesn't initialized with default watch.");
     }
 
@@ -100,7 +102,17 @@ class StopWatchTest extends \PHPUnit_Framework_TestCase
      */
     public function testAddWatchesWithEmptyArrayReturnsFalse()
     {
-        $this->assertFalse($this->stopWatch->addWatches(array()), "addWatches with empty array returns true.");
+        $this->assertSame(array(), $this->stopWatch->addWatches(array()), "addWatches with empty array returns true.");
+    }
+
+    /**
+     * @group Phpreboot_Stopwatch_StopWatch_addWatches
+     */
+    public function testAddWatchesWithDuplicateNamesReturnsCorrectStatus()
+    {
+        $this->assertSame(array(true, false),
+            $this->stopWatch->addWatches(array('name', 'name')),
+            "addWatches with duplicate name do not returns correct message.");
     }
 
     /* ********************/
