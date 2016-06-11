@@ -84,6 +84,25 @@ class StopWatchTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(2, $this->stopWatch->getWatchCount(), "New watch with duplicate name was added.");
     }
 
+    /**
+     * @group Phpreboot_Stopwatch_StopWatch_addWatches
+     */
+    public function testMultipleWatchesCanBeAdded()
+    {
+        $this->assertEquals(1, $this->stopWatch->getWatchCount(), "Stopwatch doesn't initialized with default watch.");
+
+        $this->assertTrue($this->stopWatch->addWatches(array('watch1', 'watch2')), "addWatches returns false for two new watches.");
+        $this->assertEquals(3, $this->stopWatch->getWatchCount(), "Stopwatch doesn't initialized with default watch.");
+    }
+
+    /**
+     * @group Phpreboot_Stopwatch_StopWatch_addWatches
+     */
+    public function testAddWatchesWithEmptyArrayReturnsFalse()
+    {
+        $this->assertFalse($this->stopWatch->addWatches(array()), "addWatches with empty array returns true.");
+    }
+
     /* ********************/
     /* getWatchCount Test */
     /* ********************/
@@ -119,5 +138,15 @@ class StopWatchTest extends \PHPUnit_Framework_TestCase
 
         $newWatch = $this->stopWatch->getWatch("newWatch");
         $this->assertInstanceOf('Phpreboot\Stopwatch\Timer', $newWatch, "New watch is not an instance of Watch.");
+    }
+
+    /**
+     * @group Phpreboot_Stopwatch_StopWatch_getWatch
+     * @expectedException \InvalidArgumentException
+     * @expectedExceptionMessage Watch NonExistingWatch does not exist.
+     */
+    public function testGetWatchForNonExistingWatchThrowsException()
+    {
+        $this->stopWatch->getWatch('NonExistingWatch');
     }
 }
