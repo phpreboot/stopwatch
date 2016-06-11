@@ -1,6 +1,6 @@
 # phpreboot/stopwatch
 
-[![Build Status](https://travis-ci.org/phpreboot/stopwatch.svg?branch=master)](https://travis-ci.org/phpreboot/stopwatch) [![HHVM Status](http://hhvm.h4cc.de/badge/phpreboot/stopwatch.svg)](http://hhvm.h4cc.de/package/phpreboot/stopwatch) [![Code Climate](https://codeclimate.com/github/phpreboot/stopwatch/badges/gpa.svg)](https://codeclimate.com/github/phpreboot/stopwatch) [![Test Coverage](https://codeclimate.com/github/phpreboot/stopwatch/badges/coverage.svg)](https://codeclimate.com/github/phpreboot/stopwatch/coverage) [![Software License](https://img.shields.io/badge/License-MIT-brightgreen.svg)](https://github.com/phpreboot/stopwatch/blob/master/LICENSE)
+[![Build Status](https://travis-ci.org/phpreboot/stopwatch.svg?branch=master)](https://travis-ci.org/phpreboot/stopwatch) [![HHVM Status](http://hhvm.h4cc.de/badge/phpreboot/stopwatch.svg?style=flat)](http://hhvm.h4cc.de/package/phpreboot/stopwatch) [![Code Climate](https://codeclimate.com/github/phpreboot/stopwatch/badges/gpa.svg)](https://codeclimate.com/github/phpreboot/stopwatch) [![Test Coverage](https://codeclimate.com/github/phpreboot/stopwatch/badges/coverage.svg)](https://codeclimate.com/github/phpreboot/stopwatch/coverage) [![Software License](https://img.shields.io/badge/License-MIT-brightgreen.svg)](https://github.com/phpreboot/stopwatch/blob/master/LICENSE)
 
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/c0bbc196-0cff-4362-b286-9f1b3b7cd445/big.png)](https://insight.sensiolabs.com/projects/c0bbc196-0cff-4362-b286-9f1b3b7cd445)
 
