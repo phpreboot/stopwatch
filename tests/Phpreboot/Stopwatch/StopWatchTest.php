@@ -176,7 +176,7 @@ class StopWatchTest extends \PHPUnit_Framework_TestCase
     /**
      * @group Phpreboot_Stopwatch_StopWatch_start
      */
-    public function testDefaultStopWatchCanBeStarted()
+    public function testStopWatchCanBeStarted()
     {
         $this->assertSame(Timer::STATE_NOT_STARTED, $this->stopWatch->getWatch()->getState(), "StopWatch timer state is not correct.");
         $this->assertTrue($this->stopWatch->start(), "StopWatch could not be started");
@@ -189,5 +189,45 @@ class StopWatchTest extends \PHPUnit_Framework_TestCase
     public function testNonExistingStopWatchCanNotBeStarted()
     {
         $this->assertFalse($this->stopWatch->start('nonExistingWatch'));
+    }
+
+    /**
+     * @group Phpreboot_Stopwatch_StopWatch_pause
+     */
+    public function testStopWatchCanBePaused()
+    {
+        $this->assertSame(Timer::STATE_NOT_STARTED, $this->stopWatch->getWatch()->getState(), "StopWatch timer state is not correct.");
+        $this->assertTrue($this->stopWatch->start(), "StopWatch could not be started");
+        $this->assertSame(Timer::STATE_STARTED, $this->stopWatch->getWatch()->getState(), "StopWatch timer state is not correct after start.");
+        $this->assertTrue($this->stopWatch->pause(), "StopWatch could not be paused");
+        $this->assertSame(Timer::STATE_PAUSED, $this->stopWatch->getWatch()->getState(), "StopWatch timer state is not correct after pause.");
+    }
+
+    /**
+     * @group Phpreboot_Stopwatch_StopWatch_pause
+     */
+    public function testNonExistingStopWatchCanNotBePaused()
+    {
+        $this->assertFalse($this->stopWatch->pause('nonExistingWatch'));
+    }
+
+    /**
+     * @group Phpreboot_Stopwatch_StopWatch_stop
+     */
+    public function testStopWatchCanBeStopped()
+    {
+        $this->assertSame(Timer::STATE_NOT_STARTED, $this->stopWatch->getWatch()->getState(), "StopWatch timer state is not correct.");
+        $this->assertTrue($this->stopWatch->start(), "StopWatch could not be started");
+        $this->assertSame(Timer::STATE_STARTED, $this->stopWatch->getWatch()->getState(), "StopWatch timer state is not correct after start.");
+        $this->assertTrue($this->stopWatch->stop(), "StopWatch could not be stopped");
+        $this->assertSame(Timer::STATE_STOPPED, $this->stopWatch->getWatch()->getState(), "StopWatch timer state is not correct after stop.");
+    }
+
+    /**
+     * @group Phpreboot_Stopwatch_StopWatch_stop
+     */
+    public function testNonExistingStopWatchCanNotBeStopped()
+    {
+        $this->assertFalse($this->stopWatch->stop('nonExistingWatch'));
     }
 }
