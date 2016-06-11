@@ -1,5 +1,7 @@
 # phpreboot/stopwatch [![Build Status](https://travis-ci.org/phpreboot/stopwatch.svg?branch=master)](https://travis-ci.org/phpreboot/stopwatch) [![Code Climate](https://codeclimate.com/github/phpreboot/stopwatch/badges/gpa.svg)](https://codeclimate.com/github/phpreboot/stopwatch) [![Test Coverage](https://codeclimate.com/github/phpreboot/stopwatch/badges/coverage.svg)](https://codeclimate.com/github/phpreboot/stopwatch/coverage)
 
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/c0bbc196-0cff-4362-b286-9f1b3b7cd445/big.png)](https://insight.sensiolabs.com/projects/c0bbc196-0cff-4362-b286-9f1b3b7cd445)
+
 ## Purpose
 
 While optimizations, we need to check time taken by different operations. This soon becomes ugly, if we put many
